@@ -1,0 +1,13 @@
+ignored:
+  - FAKE_DL3003
+  - DL3006
+  - DL3007
+  - DL3047
+  
+trustedRegistries:
+  - gcr.io
+  - docker.io
+  - quay.io
+  - icr.io
+  - registry.access.redhat.com
+  - docker-na-public.artifactory.swg-devops.com
