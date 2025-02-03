@@ -1,0 +1,1 @@
+**Important:** To view documentation for License Service without an IBM Cloud Pak for stand-alone IBM Containerized Software, see [Tracking license usage of stand-alone IBM® Containerized Software in IBM Docs](https://ibm.biz/license_service4containers). Note that  this documentation hosts the content for the latest version of License Service.
