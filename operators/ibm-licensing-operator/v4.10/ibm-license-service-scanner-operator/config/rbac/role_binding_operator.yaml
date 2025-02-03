@@ -1,0 +1,38 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrolebinding
+    app.kubernetes.io/instance: operator-cluster-role-binding
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: ibm-licensing-scanner-operator
+    app.kubernetes.io/part-of: ibm-licensing-scanner-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: operator-cluster-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ibm-licensing-scanner-operator-role
+subjects:
+  - kind: ServiceAccount
+    name: ibm-licensing-scanner-operator-service-account
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    app.kubernetes.io/name: rolebinding
+    app.kubernetes.io/instance: operator-role-binding
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: ibm-licensing-scanner-operator
+    app.kubernetes.io/part-of: ibm-licensing-scanner-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: operator-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: ibm-licensing-scanner-operator-role
+subjects:
+  - kind: ServiceAccount
+    name: ibm-licensing-scanner-operator-service-account

@@ -1,0 +1,17 @@
+apiVersion: operator.ibm.com/v1alpha1
+kind: IBMLicenseServiceReporter
+metadata:
+  labels:
+    app.kubernetes.io/name: ibmlicenseservicereporter
+    app.kubernetes.io/instance: ibmlicenseservicereporter-instance
+    app.kubernetes.io/part-of: ibm-license-service-reporter-operator
+    app.kubernetes.io/created-by: ibm-license-service-reporter-operator
+    app.kubernetes.io/managed-by: operator
+  name: instance
+spec:
+  version: 4.2.12
+  authentication:
+    useradmin:
+      enabled: true
+  license:
+      accept: false

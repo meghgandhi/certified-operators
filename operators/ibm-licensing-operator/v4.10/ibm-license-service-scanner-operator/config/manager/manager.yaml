@@ -1,0 +1,91 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    control-plane: controller-manager
+    app.kubernetes.io/name: ibm-licensing-scanner
+    app.kubernetes.io/version: 4.2.12
+    app.kubernetes.io/component: namespace
+    app.kubernetes.io/managed-by: kustomize
+  name: ibm-licensing-scanner
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: operator
+  namespace: ibm-licensing-scanner
+  labels:
+    control-plane: controller-manager
+    app.kubernetes.io/name: ibm-licensing-scanner
+    app.kubernetes.io/version: 4.2.12
+    app.kubernetes.io/component: ibm-licensing-scanner-operator-deployment
+    app.kubernetes.io/managed-by: kustomize
+  annotations:
+    productID: "105fa377cada4660a213f99e02c53782"
+    productName: "IBM License Service Scanner"
+    productMetric: "FREE"
+spec:
+  selector:
+    matchLabels:
+      control-plane: controller-manager
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: ibm-licensing-scanner-operator
+        productID: "105fa377cada4660a213f99e02c53782"
+        productName: "IBM License Service Scanner"
+        productMetric: "FREE"
+      labels:
+        control-plane: controller-manager
+        app.kubernetes.io/name: ibm-licensing-scanner
+        app.kubernetes.io/version: 4.2.12
+        app.kubernetes.io/component: ibm-licensing-scanner-operator-pod
+        app.kubernetes.io/managed-by: kustomize
+    spec:
+      containers:
+        - command:
+            - ibm-license-service-scanner-operator
+          env:
+            - name: OPERATOR_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: IBM_LICENSE_SERVICE_SCANNER_OPERAND_IMAGE
+              value: icr.io/cpopen/cpfs/ibm-licensing-scanner:4.2.12
+          args:
+            - --leader-elect
+          image: controller:latest
+          name: ibm-licensing-scanner-operator
+          securityContext:
+            seccompProfile:
+              type: RuntimeDefault
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8081
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8081
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            limits:
+              cpu: 500m
+              memory: 128Mi
+            requests:
+              cpu: 10m
+              memory: 64Mi
+      serviceAccountName: ibm-licensing-scanner-operator-service-account
+      terminationGracePeriodSeconds: 10

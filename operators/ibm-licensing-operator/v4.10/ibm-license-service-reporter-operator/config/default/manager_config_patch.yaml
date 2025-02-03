@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ibm-license-service-reporter-operator
+  namespace: ibm-licensing
+spec:
+  template:
+    spec:
+      containers:
+      - name: manager

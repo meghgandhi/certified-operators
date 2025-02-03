@@ -1,0 +1,10 @@
+- name: IBM_LICENSE_SERVICE_REPORTER_OPERATOR_IMAGE
+  image: icr.io/cpopen/ibm-license-service-reporter-operator:4.2.2
+- name: IBM_POSTGRESQL_IMAGE
+  image: docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-scratch-docker-local/ibmcom/ibm-postgresql:master
+- name: IBM_LICENSE_SERVICE_REPORTER_IMAGE
+  image: docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-scratch-docker-local/ibmcom/ibm-license-service-reporter:master
+- name: IBM_LICENSE_SERVICE_REPORTER_UI_IMAGE
+  image: docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-scratch-docker-local/ibmcom/ibm-license-service-reporter-ui:master
+- name: IBM_LICENSE_SERVICE_REPORTER_AUTH_IMAGE
+  image: docker-na-public.artifactory.swg-devops.com/hyc-cloud-private-integration-docker-local/ibmcom/ibm-license-service-reporter-oauth2-proxy:master

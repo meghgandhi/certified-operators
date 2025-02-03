@@ -1,0 +1,27 @@
+# permissions for end users to view ibmlicenseservicereporters.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: ibmlicenseservicereporter-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: ibm-license-service-reporter-operator
+    app.kubernetes.io/part-of: ibm-license-service-reporter-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: ibmlicenseservicereporter-viewer-role
+rules:
+- apiGroups:
+  - operator.ibm.com
+  resources:
+  - ibmlicenseservicereporters
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - operator.ibm.com
+  resources:
+  - ibmlicenseservicereporters/status
+  verbs:
+  - get
