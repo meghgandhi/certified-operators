@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ibm-license-service
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+  sources:
+    - repoURL: "https://github.com/IBM/ibm-licensing-operator"
+      targetRevision: "master"
+      path: deploy/argo-cd/components/license-service/helm-cluster-scoped
+    - repoURL: "https://github.com/IBM/ibm-licensing-operator"
+      targetRevision: "master"
+      path: deploy/argo-cd/components/license-service/helm
