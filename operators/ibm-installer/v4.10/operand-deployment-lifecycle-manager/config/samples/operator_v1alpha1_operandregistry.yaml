@@ -1,0 +1,23 @@
+apiVersion: operator.ibm.com/v1alpha1
+kind: OperandRegistry
+metadata:
+  labels:
+    app.kubernetes.io/instance: "operand-deployment-lifecycle-manager"
+    app.kubernetes.io/managed-by: "operand-deployment-lifecycle-manager"
+    app.kubernetes.io/name: "operand-deployment-lifecycle-manager"
+  name: example-service
+spec:
+  operators:
+  - name: jaeger
+    namespace: default
+    channel: stable
+    installMode: cluster
+    packageName: jaeger
+    sourceName: community-operators
+    sourceNamespace: openshift-marketplace
+  - name: mongodb-atlas-kubernetes
+    namespace: default
+    channel: stable
+    packageName: mongodb-atlas-kubernetes
+    sourceName: community-operators
+    sourceNamespace: openshift-marketplace

@@ -1,0 +1,22 @@
+apiVersion: operator.ibm.com/v1alpha1
+kind: OperandConfig
+metadata:
+  labels:
+    app.kubernetes.io/instance: "operand-deployment-lifecycle-manager"
+    app.kubernetes.io/managed-by: "operand-deployment-lifecycle-manager"
+    app.kubernetes.io/name: "operand-deployment-lifecycle-manager"
+  name: example-service
+spec:
+  services:
+  - name: jaeger
+    spec:
+      jaeger:
+        strategy: allinone
+  - name: mongodb-atlas-kubernetes
+    spec:
+      atlasDeployment:
+          deploymentSpec:
+            name: test-deployment
+          projectRef:
+            name: my-project
+

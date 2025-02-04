@@ -1,0 +1,49 @@
+[
+  {
+    "imageType": "external",
+    "sourceRepo": "registry.access.redhat.com",
+    "sourceNamespace": "ubi9",
+    "sourceImage": "ubi-minimal",
+    "destStage": "edge",
+    "destNamespace": "build-images",
+    "destImage": "ubi9-minimal",
+    "tag": "9.5-1736404155",
+    "updatePackages": []
+  },
+  {
+    "imageType": "external",
+    "sourceRepo": "registry.access.redhat.com",
+    "sourceNamespace": "ubi9",
+    "sourceImage": "ubi",
+    "destStage": "edge",
+    "destNamespace": "build-images",
+    "destImage": "ubi9",
+    "tag": "9.5-1736404036",
+    "updatePackages": []
+  },
+  {
+    "imageType": "external",
+    "sourceRepo": "registry.access.redhat.com",
+    "sourceNamespace": "ubi9",
+    "sourceImage": "ubi-micro",
+    "destStage": "edge",
+    "destNamespace": "build-images",
+    "destImage": "ubi9-micro",
+    "tag": "9.5-1736426761",
+    "updatePackages": []
+  },
+  {
+    "imageType": "node",
+    "sourceImage": "ubi9-minimal",
+    "sourceTag": "9.5-1736404155",
+    "destImage": "node-v20-ubi9-minimal",
+    "nodeVersion": "20.18.2"
+  },
+  {
+    "imageType": "node",
+    "sourceImage": "ubi9-minimal",
+    "sourceTag": "9.5-1736404155",
+    "destImage": "node-v22-ubi9-minimal",
+    "nodeVersion": "22.13.1"
+  }
+]
